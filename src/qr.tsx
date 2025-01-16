@@ -1,7 +1,13 @@
 import QRCode from "qrcode";
 import { useEffect, useState } from "react";
 
-export function QR({ content }: { content: string }) {
+export function QR({
+  content,
+  className,
+}: {
+  content: string;
+  className?: string;
+}) {
   const [dataUrl, setDataUrl] = useState<string | undefined>();
 
   useEffect(() => {
@@ -16,9 +22,5 @@ export function QR({ content }: { content: string }) {
     generateDataUrl();
   }, [content]);
 
-  return (
-    <div>
-      <img src={dataUrl} alt="QR Code" />
-    </div>
-  );
+  return <img src={dataUrl} alt="QR Code" className={className} />;
 }
